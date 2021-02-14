@@ -1,10 +1,13 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
+import jsonify
+import requests
 import pickle
 import numpy as np
+import sklearn
 
 app = Flask(__name__,template_folder='templates')
 model = pickle.load(open('Random_forest.pkl', 'rb'))
-@app.route('/')
+@app.route('/', methods = ['GET'])
 def Home():
     return render_template('index.html')
 
